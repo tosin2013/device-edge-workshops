@@ -13,6 +13,10 @@ RUN mkdir -p  /.ansible/tmp &&  \
     && mkdir -p /.ansible/collections \
     && chmod -R 777 /.ansible/collections 
 
+# Create a galaxy_token file instead of a directory
+RUN touch /.ansible/galaxy_token \
+    && chmod 777 /.ansible/galaxy_token
+    
 RUN dnf -y install java-17-openjdk python3 python3-pip
 
 RUN mkdir $VIRTUAL_ENV
