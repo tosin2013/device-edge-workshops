@@ -43,6 +43,7 @@
   stat:
     path: "{{ ansible_env.HOME }}/.local/share/containers" 
   register: register_name
+  become: true
 
 - name: "restorecon"
   shell: |
@@ -56,6 +57,7 @@
   containers.podman.podman_image:
     name: "{{ service.name }}"
     path: "{{ build_dir }}/{{ service.name }}/"
+    
 
 - name: run post tasks if needed
   ansible.builtin.include_tasks:
