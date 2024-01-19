@@ -23,6 +23,7 @@
     state: present
   notify:
     - restart_nm
+  when: equinox_int is not defined 
 
 - name: add nm conn for workshop
   community.general.nmcli:
@@ -39,3 +40,4 @@
     state: present
   notify:
     - restart_nm
+  when: equinox_int is not defined 
