@@ -66,6 +66,25 @@
             cmd: git commit -m "initial commit by provisioner"
             chdir: "{{ repo_root_path }}"
 
+    - name: "Create repo for demo {{ additional_repo.name }}"
+      ansible.builtin.uri:
+        url: "{{ _gitea_full_host }}/api/v1/admin/users/{{ gitea_demo_user }}/repos"
+        validate_certs: false
+        user: "{{ _gitea_admin_user }}"
+        password: '{{ admin_password }}'
+        force_basic_auth: true
+        body_format: json
+        method: POST
+        body:
+          name: "{{ additional_repo.name }}"
+          private: true
+        status_code:
+          - 201
+          - 409
+      when:
+        - workshop_or_demo is defined
+        - workshop_or_demo == 'demo'
+
     - name: push repos into local source control
       ansible.builtin.shell:
         cmd: "git push --set-upstream http://student{{ student_number }}:'{{ admin_password }}'@{{ ansible_host }}:3001/student{{ student_number }}/{{ additional_repo.name }}.git main"

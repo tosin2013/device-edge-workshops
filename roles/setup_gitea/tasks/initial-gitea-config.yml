@@ -9,6 +9,19 @@
   failed_when:
     - "'created' not in gitea_user_create.stdout"
     - "'already exists' not in gitea_user_create.stdout"
-  when:
-    - _create_initial_gitea_user
+  when: _create_initial_gitea_user and equinox_int is not defined
+
+
+- name: create initial gitea user on equinox server
+  ansible.builtin.shell:
+    cmd: podman exec -it {{ gitea_container }} su git -c "/app/gitea/gitea admin user create --username lab-instructor --password '{{ admin_password }}' --email 'dont@email.me' --admin"
+  register: gitea_user_create
+  changed_when:
+    - "'created' in gitea_user_create.stdout"
+  failed_when:
+    - "'created' not in gitea_user_create.stdout"
+    - "'already exists' not in gitea_user_create.stdout"
+  when: _create_initial_gitea_user and equinox_int is defined
   #no_log: true
+  become: true
+  become_user: "{{ ansible_user }}"
