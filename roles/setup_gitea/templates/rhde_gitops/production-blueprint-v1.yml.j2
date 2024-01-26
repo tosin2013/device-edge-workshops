@@ -5,6 +5,9 @@ builder_request_timeout: 300
 builder_wait_compose_timeout: 2400
 builder_compose_type: edge-commit
 builder_skip_repo: true
+builder_rhsm_repos:
+  - rhocp-4.14-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
+  - fast-datapath-for-rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}-rpms
 builder_compose_pkgs:
   - podman
   - vim-enhanced
