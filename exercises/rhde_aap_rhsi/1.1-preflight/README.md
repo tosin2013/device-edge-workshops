@@ -5,7 +5,7 @@
 * [Objective](#objective)
 * [Guide](#guide)
    * [Your Lab Environment](#your-lab-environment)
-   * [Step 1 - Identifying Edge Device Type](#step-1---identifying-edge-device-type)
+   * [Completing the Exercises](#completing-the-exercises)
 
 ## Objective
 
@@ -53,6 +53,6 @@ Optionally, feel free to use SSH and an IDE on your personal device.
 ---
 **Navigation**
 
-[Next Exercise](../1.2-device-intro/)
+[Next Exercise](../1.2-student-pages/)
 
 [Click here to return to the Workshop Homepage](../README.md)
