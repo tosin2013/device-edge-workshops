@@ -217,8 +217,8 @@ local_services:
         dest: dnsmasq.conf
         vars:
           upstream_dns_servers:
-            - 8.8.8.8
-            - 8.8.4.4
+            - 192.168.40.5
+            - 1.1.1.1
           internal_address: 192.168.40.5
           internal_netmask: 24
           dhcp_range_start: 192.168.40.10
