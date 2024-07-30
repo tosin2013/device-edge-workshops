@@ -20,6 +20,7 @@ To enable it for our user, we'll use `loginctl`:
 ```
 sudo loginctl enable-linger $(YOUR-USER-HERE)
 ```
+where the username is provided in the "Edge Device Credentials" of your student page.
 
 If prompted to authenticate, use the password provided on your student page.
 
@@ -36,6 +37,12 @@ To copy the image over to our user, we'll use the `podman scp` command. For refe
 For our purposes, the command will look like the below:
 
 ![Copy RHSI Image](../images/copy-rhsi-iamge.png)
+
+Here is the command (to copy the image and retag to 2.4.3): 
+```
+sudo podman image scp root@localhost::registry.redhat.io/service-interconnect/skupper-router-rhel9:latest ansible@localhost::
+podman tag registry.redhat.io/service-interconnect/skupper-router-rhel9:latest registry.redhat.io/service-interconnect/skupper-router-rhel9:2.4.3
+```
 
 Once complete, the image should now be available under our user:
 

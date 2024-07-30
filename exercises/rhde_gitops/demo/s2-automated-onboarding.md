@@ -10,7 +10,7 @@ Now it's time to prepare your edge device:
 
 * If you are using a physical device: You will need to configure your BIOS to first boot from network using the interface that is connected to the local edge management server.
 
-* If you plan to use a VM: You will need to create a VM with at least 2vCPUs, (at least) 2.5 GB Memory, 10GB disk and 1 NIC connected to the "isolated network" wher you have the secondary interface of your local edge manager server. If you use `Virtual Machine Manager` (so `libvirt`) you should select the `Manual install` mode, then be sure that you select the right network and click `Customize configuration before install` so you can select the boot order in `Boot Options` to use the NIC first (remember than once installed you will need to change this into the local disk by stopping the VM and de-selecting the network boot in this menu). If you are not using  `Virtual Machine Manager` just create an "empty" VM (so no OS installed but with a local disk attached) that boots from NIC and then change the boot order after the install (when you see again the PXE menu page).
+* If you plan to use a VM: You will need to create a VM with at least 2vCPUs, (at least) 2.5 GB Memory, 35GB disk (it could be less but some services such as `wordpress` won't start) and 1 NIC connected to the "isolated network" wher you have the secondary interface of your local edge manager server. If you use `Virtual Machine Manager` (so `libvirt`) you should select the `Manual install` mode, then be sure that you select the right network and click `Customize configuration before install` so you can select the boot order in `Boot Options` to use the NIC first (remember than once installed you will need to change this into the local disk by stopping the VM and de-selecting the network boot in this menu). If you are not using  `Virtual Machine Manager` just create an "empty" VM (so no OS installed but with a local disk attached) that boots from NIC and then change the boot order after the install (when you see again the PXE menu page).
 
 1. Open the "Jobs" page in the AAP and keep it visible while performing the following steps.
 
@@ -90,7 +90,7 @@ Select the user that you are using for the demo/workshop (probably Student 1).
 
   >**Note**
   >
-  > Your edge device is located in an "isolated" network. If you don't plug your laptop into that network, in order to SSH to the edge device in this demo you will need to first SSH to the local edge manager server and use it as a Jump host. Remember that you have the local edge manager server IP in the `local-inventory.yaml` file that you used to deploy the lab and you can obtain the edge device IP from the AAP Inventory.
+  > Your edge device is located in an "isolated" network. If you don't plug your laptop into that network, in order to SSH to the edge device in this demo you will need to first SSH to the local edge manager server and use it as a Jump host. Remember that you have the local edge manager server IP in the `local-inventory.yaml` file that you used to deploy the lab and you can obtain the edge device IP from the AAP Inventory (the username is `ansible`).
 
 The script:
 
